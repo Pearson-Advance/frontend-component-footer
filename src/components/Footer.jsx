@@ -11,11 +11,14 @@ import LanguageSelector from './LanguageSelector';
 ensureConfig([
   'LMS_BASE_URL',
   'LOGO_TRADEMARK_URL',
+  'FOOTER_PRIVACY_POLICY_LINK',
+  'FOOTER_TERMS_OF_SERVICE_LINK',
 ], 'Footer component');
 
 const EVENT_NAMES = {
   FOOTER_LINK: 'edx.bi.footer.link',
 };
+const dateNow = new Date();
 
 class SiteFooter extends React.Component {
   constructor(props) {
@@ -49,24 +52,29 @@ class SiteFooter extends React.Component {
         className="footer d-flex border-top py-3 px-4"
       >
         <div className="container-fluid d-flex">
-          <a
-            className="d-block"
-            href={config.LMS_BASE_URL}
-            aria-label={intl.formatMessage(messages['footer.logo.ariaLabel'])}
-          >
-            <img
-              style={{ maxHeight: 45 }}
-              src={logo || config.LOGO_TRADEMARK_URL}
-              alt={intl.formatMessage(messages['footer.logo.altText'])}
-            />
-          </a>
-          <div className="flex-grow-1" />
+          <ul>
+            <li>
+              <a href={config.FOOTER_PRIVACY_POLICY_LINK}>
+                {intl.formatMessage(messages['footer.legalLinks.privacyPolicy'])}
+              </a>
+            </li>
+            <li>
+              <a href={config.FOOTER_TERMS_OF_SERVICE_LINK}>
+                {intl.formatMessage(messages['footer.legalLinks.termsOfServiceNoHonorCode'])}
+              </a>
+            </li>
+          </ul>
           {showLanguageSelector && (
             <LanguageSelector
               options={supportedLanguages}
               onSubmit={onLanguageSelected}
             />
           )}
+        </div>
+        <div className="container-fluid d-flex copyright">
+          <p>
+            Copyright © {dateNow.getFullYear()} Pearson Education Inc. or its affiliate(s). All rights reserved.
+          </p>
         </div>
       </footer>
     );
