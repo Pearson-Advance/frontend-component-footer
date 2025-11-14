@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { useIntl } from '@edx/frontend-platform/i18n';
-import { sendTrackEvent } from '@edx/frontend-platform/analytics';
 import { ensureConfig } from '@edx/frontend-platform';
 import { AppContext } from '@edx/frontend-platform/react';
 
@@ -24,22 +23,11 @@ const dateNow = new Date();
 const SiteFooter = ({
   supportedLanguages,
   onLanguageSelected,
-  logo,
 }) => {
   const intl = useIntl();
   const { config } = useContext(AppContext);
 
   const showLanguageSelector = supportedLanguages.length > 0 && onLanguageSelected;
-
-  const externalLinkClickHandler = (event) => {
-    const label = event.currentTarget.getAttribute('href');
-    const eventName = EVENT_NAMES.FOOTER_LINK;
-    const properties = {
-      category: 'outbound_link',
-      label,
-    };
-    sendTrackEvent(eventName, properties);
-  };
 
   return (
     <footer
@@ -49,12 +37,12 @@ const SiteFooter = ({
       <div className="container-fluid d-flex">
         <ul>
           <li>
-            <a href={config.FOOTER_PRIVACY_POLICY_LINK}>
+            <a href={config.FOOTER_PRIVACY_POLICY_LINK} target="_blank" rel="noopener noreferrer">
               {intl.formatMessage(messages['footer.legalLinks.privacyPolicy'])}
             </a>
           </li>
           <li>
-            <a href={config.FOOTER_TERMS_OF_SERVICE_LINK}>
+            <a href={config.FOOTER_TERMS_OF_SERVICE_LINK} target="_blank" rel="noopener noreferrer">
               {intl.formatMessage(messages['footer.legalLinks.termsOfServiceNoHonorCode'])}
             </a>
           </li>
@@ -77,7 +65,6 @@ const SiteFooter = ({
 };
 
 SiteFooter.propTypes = {
-  logo: PropTypes.string,
   onLanguageSelected: PropTypes.func,
   supportedLanguages: PropTypes.arrayOf(PropTypes.shape({
     label: PropTypes.string.isRequired,
@@ -86,7 +73,6 @@ SiteFooter.propTypes = {
 };
 
 SiteFooter.defaultProps = {
-  logo: undefined,
   onLanguageSelected: undefined,
   supportedLanguages: [],
 };
