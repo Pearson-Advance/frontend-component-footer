@@ -151,6 +151,11 @@ const messages = defineMessages({
     defaultMessage: 'Page Footer',
     description: 'aria-label for the footer component',
   },
+  'footer.legalLinks.termsOfServiceNoHonorCode': {
+    id: 'footer.legalLinks.termsOfServiceNoHonorCode',
+    defaultMessage: 'Terms of Service',
+    description: 'The label for the link to the edX terms of service page.',
+  },
 });
 
 export default messages;
