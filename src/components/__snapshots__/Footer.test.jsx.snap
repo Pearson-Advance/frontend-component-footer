@@ -8,22 +8,24 @@ exports[`<Footer /> renders correctly renders with a language selector 1`] = `
   <div
     className="container-fluid d-flex"
   >
-    <a
-      aria-label="edX Home"
-      className="d-block"
-      href="http://localhost:18000"
-      onClick={[Function]}
-    >
-      <img
-        alt="Powered by Open edX"
-        src="https://edx-cdn.org/v3/default/logo-trademark.svg"
-        style={
-          {
-            "maxHeight": 45,
-          }
-        }
-      />
-    </a>
+    <ul>
+      <li>
+        <a
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          Privacy Policy
+        </a>
+      </li>
+      <li>
+        <a
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          Terms of Service
+        </a>
+      </li>
+    </ul>
     <div
       className="flex-grow-1"
     />
@@ -67,6 +69,15 @@ exports[`<Footer /> renders correctly renders with a language selector 1`] = `
       </div>
     </form>
   </div>
+  <div
+    className="container-fluid d-flex copyright"
+  >
+    <p>
+      Copyright © 
+      2025
+       Pearson Education Inc. or its affiliate(s). All rights reserved.
+    </p>
+  </div>
 </footer>
 `;
 
@@ -78,25 +89,36 @@ exports[`<Footer /> renders correctly renders without a language selector 1`] = 
   <div
     className="container-fluid d-flex"
   >
-    <a
-      aria-label="edX Home"
-      className="d-block"
-      href="http://localhost:18000"
-      onClick={[Function]}
-    >
-      <img
-        alt="Powered by Open edX"
-        src="https://edx-cdn.org/v3/default/logo-trademark.svg"
-        style={
-          {
-            "maxHeight": 45,
-          }
-        }
-      />
-    </a>
+    <ul>
+      <li>
+        <a
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          Privacy Policy
+        </a>
+      </li>
+      <li>
+        <a
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          Terms of Service
+        </a>
+      </li>
+    </ul>
     <div
       className="flex-grow-1"
     />
+  </div>
+  <div
+    className="container-fluid d-flex copyright"
+  >
+    <p>
+      Copyright © 
+      2025
+       Pearson Education Inc. or its affiliate(s). All rights reserved.
+    </p>
   </div>
 </footer>
 `;
@@ -109,25 +131,36 @@ exports[`<Footer /> renders correctly renders without a language selector in es 
   <div
     className="container-fluid d-flex"
   >
-    <a
-      aria-label="edX Home"
-      className="d-block"
-      href="http://localhost:18000"
-      onClick={[Function]}
-    >
-      <img
-        alt="Powered by Open edX"
-        src="https://edx-cdn.org/v3/default/logo-trademark.svg"
-        style={
-          {
-            "maxHeight": 45,
-          }
-        }
-      />
-    </a>
+    <ul>
+      <li>
+        <a
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          Privacy Policy
+        </a>
+      </li>
+      <li>
+        <a
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          Terms of Service
+        </a>
+      </li>
+    </ul>
     <div
       className="flex-grow-1"
     />
+  </div>
+  <div
+    className="container-fluid d-flex copyright"
+  >
+    <p>
+      Copyright © 
+      2025
+       Pearson Education Inc. or its affiliate(s). All rights reserved.
+    </p>
   </div>
 </footer>
 `;
