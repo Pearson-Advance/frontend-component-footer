@@ -1,5 +1,35 @@
-$gray-footer: #fcfcfc !default;
-
+//Styles for support tokens in pearson footer
 .footer {
-  background-color: var(--pgn-color-light-100, $gray-footer);
+  background-color: var(--pgn-color-primary-base);
+  flex-direction: column;
+
+  .container-fluid {
+    align-items: center;
+    justify-content: center;
+
+    ul {
+      list-style: none;
+      display: inline-flex;
+      padding: 0;
+      margin-bottom: 3rem;
+
+      li:last-child::before {
+        content: "|";
+        padding: 0 20px;
+        color: var(--pgn-color-white);
+      }
+
+      a {
+        font-size: 0.875rem;
+        color: var(--pgn-color-white);
+      }
+    }
+
+    &.copyright {
+      p {
+        font-size: 0.7rem;
+        color: var(--pgn-color-white);
+      }
+    }
+  }
 }

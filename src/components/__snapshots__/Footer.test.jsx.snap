@@ -74,7 +74,7 @@ exports[`<Footer /> renders correctly renders with a language selector 1`] = `
   >
     <p>
       Copyright © 
-      2025
+      2026
        Pearson Education Inc. or its affiliate(s). All rights reserved.
     </p>
   </div>
@@ -116,7 +116,7 @@ exports[`<Footer /> renders correctly renders without a language selector 1`] = 
   >
     <p>
       Copyright © 
-      2025
+      2026
        Pearson Education Inc. or its affiliate(s). All rights reserved.
     </p>
   </div>
@@ -158,7 +158,7 @@ exports[`<Footer /> renders correctly renders without a language selector in es 
   >
     <p>
       Copyright © 
-      2025
+      2026
        Pearson Education Inc. or its affiliate(s). All rights reserved.
     </p>
   </div>
