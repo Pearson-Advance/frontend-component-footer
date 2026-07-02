@@ -5,10 +5,19 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { IntlProvider } from '@edx/frontend-platform/i18n';
 import { AppContext } from '@edx/frontend-platform/react';
+import { getConfig } from '@edx/frontend-platform';
 
 import Footer from './Footer';
 import FooterSlot from '../plugin-slots/FooterSlot';
 import StudioFooterHelpSectionSlot from '../plugin-slots/StudioFooterHelpSectionSlot';
+
+jest.mock('@edx/frontend-platform', () => {
+  const originalModule = jest.requireActual('@edx/frontend-platform');
+  return {
+    ...originalModule,
+    getConfig: jest.fn(() => ({})),
+  };
+});
 
 const FooterWithContext = ({ locale = 'es' }) => {
   const contextValue = useMemo(() => ({
@@ -57,6 +66,11 @@ const FooterWithLanguageSelector = ({ languageSelected = () => {} }) => {
 };
 
 describe('<Footer />', () => {
+  beforeEach(() => {
+    getConfig.mockReset();
+    getConfig.mockReturnValue({});
+  });
+
   describe('renders correctly', () => {
     it('renders without a language selector', () => {
       const tree = renderer
@@ -73,6 +87,30 @@ describe('<Footer />', () => {
     it('renders with a language selector', () => {
       const tree = renderer
         .create(<FooterWithLanguageSelector />)
+        .toJSON();
+      expect(tree).toMatchSnapshot();
+    });
+    it('renders dynamic extra links from getConfig', () => {
+      getConfig.mockReturnValue({
+        FOOTER_EXTRA_LINKS: [
+          { text: 'Custom Link 1', link: 'https://custom1.com' },
+          { text: 'Custom Link 2', link: 'https://custom2.com' },
+        ],
+      });
+
+      const tree = renderer
+        .create(<FooterWithContext locale="en" />)
+        .toJSON();
+      expect(tree).toMatchSnapshot();
+    });
+
+    it('hides copyright when SHOW_FOOTER_COPYRIGHT is false', () => {
+      getConfig.mockReturnValue({
+        SHOW_FOOTER_COPYRIGHT: false,
+      });
+
+      const tree = renderer
+        .create(<FooterWithContext locale="en" />)
         .toJSON();
       expect(tree).toMatchSnapshot();
     });

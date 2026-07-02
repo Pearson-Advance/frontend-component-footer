@@ -1,5 +1,100 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`<Footer /> renders correctly hides copyright when SHOW_FOOTER_COPYRIGHT is false 1`] = `
+<footer
+  className="footer d-flex border-top py-3 px-4"
+  role="contentinfo"
+>
+  <div
+    className="container-fluid d-flex"
+  >
+    <ul>
+      <li>
+        <a
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          Privacy Policy
+        </a>
+      </li>
+      <li>
+        <a
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          Terms of Service
+        </a>
+      </li>
+    </ul>
+    <div
+      className="flex-grow-1"
+    />
+  </div>
+</footer>
+`;
+
+exports[`<Footer /> renders correctly renders dynamic extra links from getConfig 1`] = `
+<footer
+  className="footer d-flex border-top py-3 px-4"
+  role="contentinfo"
+>
+  <div
+    className="container-fluid d-flex"
+  >
+    <ul>
+      <li>
+        <a
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          Privacy Policy
+        </a>
+      </li>
+      <li>
+        <a
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          Terms of Service
+        </a>
+      </li>
+      <li>
+        <a
+          href="https://custom1.com"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          Custom Link 1
+        </a>
+      </li>
+      <li>
+        <a
+          href="https://custom2.com"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          Custom Link 2
+        </a>
+      </li>
+    </ul>
+    <div
+      className="flex-grow-1"
+    />
+  </div>
+  <div
+    className="container-fluid d-flex copyright mt-2"
+  >
+    <p
+      className="mb-0"
+    >
+      Copyright © 
+      2026
+       Pearson Education Inc. or its affiliate(s). All rights reserved.
+    </p>
+  </div>
+</footer>
+`;
+
 exports[`<Footer /> renders correctly renders with a language selector 1`] = `
 <footer
   className="footer d-flex border-top py-3 px-4"
@@ -70,9 +165,11 @@ exports[`<Footer /> renders correctly renders with a language selector 1`] = `
     </form>
   </div>
   <div
-    className="container-fluid d-flex copyright"
+    className="container-fluid d-flex copyright mt-2"
   >
-    <p>
+    <p
+      className="mb-0"
+    >
       Copyright © 
       2026
        Pearson Education Inc. or its affiliate(s). All rights reserved.
@@ -112,9 +209,11 @@ exports[`<Footer /> renders correctly renders without a language selector 1`] = 
     />
   </div>
   <div
-    className="container-fluid d-flex copyright"
+    className="container-fluid d-flex copyright mt-2"
   >
-    <p>
+    <p
+      className="mb-0"
+    >
       Copyright © 
       2026
        Pearson Education Inc. or its affiliate(s). All rights reserved.
@@ -154,9 +253,11 @@ exports[`<Footer /> renders correctly renders without a language selector in es 
     />
   </div>
   <div
-    className="container-fluid d-flex copyright"
+    className="container-fluid d-flex copyright mt-2"
   >
-    <p>
+    <p
+      className="mb-0"
+    >
       Copyright © 
       2026
        Pearson Education Inc. or its affiliate(s). All rights reserved.

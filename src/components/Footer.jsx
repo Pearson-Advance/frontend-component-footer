@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { useIntl } from '@edx/frontend-platform/i18n';
-import { ensureConfig } from '@edx/frontend-platform';
+import { ensureConfig, getConfig } from '@edx/frontend-platform';
 import { AppContext } from '@edx/frontend-platform/react';
 
 import messages from './Footer.messages';
@@ -27,6 +27,9 @@ const SiteFooter = ({
   const intl = useIntl();
   const { config } = useContext(AppContext);
 
+  const extraLinks = getConfig().FOOTER_EXTRA_LINKS || [];
+  const showFooterCopyright = getConfig().SHOW_FOOTER_COPYRIGHT !== false;
+
   const showLanguageSelector = supportedLanguages.length > 0 && onLanguageSelected;
 
   return (
@@ -46,6 +49,21 @@ const SiteFooter = ({
               {intl.formatMessage(messages['footer.legalLinks.termsOfServiceNoHonorCode'])}
             </a>
           </li>
+
+          {Array.isArray(extraLinks) && extraLinks.map((item) => {
+            if (!item?.text || !item?.link) {
+              return null;
+            }
+
+            return (
+              <li key={item.link}>
+                <a href={item.link} target="_blank" rel="noopener noreferrer">
+                  {item.text}
+                </a>
+              </li>
+            );
+          })}
+
         </ul>
         <div className="flex-grow-1" />
         {showLanguageSelector && (
@@ -55,11 +73,13 @@ const SiteFooter = ({
           />
         )}
       </div>
-      <div className="container-fluid d-flex copyright">
-        <p>
-          Copyright © {dateNow.getFullYear()} Pearson Education Inc. or its affiliate(s). All rights reserved.
-        </p>
-      </div>
+      {showFooterCopyright && (
+        <div className="container-fluid d-flex copyright mt-2">
+          <p className="mb-0">
+            Copyright © {dateNow.getFullYear()} Pearson Education Inc. or its affiliate(s). All rights reserved.
+          </p>
+        </div>
+      )}
     </footer>
   );
 };
