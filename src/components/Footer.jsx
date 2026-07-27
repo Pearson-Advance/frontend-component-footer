@@ -18,7 +18,7 @@ const EVENT_NAMES = {
   FOOTER_LINK: 'edx.bi.footer.link',
 };
 
-const dateNow = new Date();
+const DEFAULT_COPYRIGHT_TEXT = 'Copyright © {year} Pearson Education Inc. or its affiliate(s). All rights reserved.';
 
 const SiteFooter = ({
   supportedLanguages,
@@ -29,6 +29,11 @@ const SiteFooter = ({
 
   const extraLinks = getConfig().FOOTER_EXTRA_LINKS || [];
   const showFooterCopyright = getConfig().SHOW_FOOTER_COPYRIGHT !== false;
+
+  const rawCopyrightText = getConfig().FOOTER_COPYRIGHT_TEXT || DEFAULT_COPYRIGHT_TEXT;
+
+  const currentYear = new Date().getFullYear();
+  const copyrightText = rawCopyrightText.replace('{year}', currentYear);
 
   const showLanguageSelector = supportedLanguages.length > 0 && onLanguageSelected;
 
@@ -75,9 +80,7 @@ const SiteFooter = ({
       </div>
       {showFooterCopyright && (
         <div className="container-fluid d-flex copyright mt-2">
-          <p className="mb-0">
-            Copyright © {dateNow.getFullYear()} Pearson Education Inc. or its affiliate(s). All rights reserved.
-          </p>
+          <p className="mb-0">{copyrightText}</p>
         </div>
       )}
     </footer>
