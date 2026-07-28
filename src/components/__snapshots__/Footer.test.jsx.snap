@@ -87,9 +87,7 @@ exports[`<Footer /> renders correctly renders dynamic extra links from getConfig
     <p
       className="mb-0"
     >
-      Copyright © 
-      2026
-       Pearson Education Inc. or its affiliate(s). All rights reserved.
+      Copyright © 2026 Pearson Education Inc. or its affiliate(s). All rights reserved.
     </p>
   </div>
 </footer>
@@ -170,9 +168,7 @@ exports[`<Footer /> renders correctly renders with a language selector 1`] = `
     <p
       className="mb-0"
     >
-      Copyright © 
-      2026
-       Pearson Education Inc. or its affiliate(s). All rights reserved.
+      Copyright © 2026 Pearson Education Inc. or its affiliate(s). All rights reserved.
     </p>
   </div>
 </footer>
@@ -214,9 +210,7 @@ exports[`<Footer /> renders correctly renders without a language selector 1`] = 
     <p
       className="mb-0"
     >
-      Copyright © 
-      2026
-       Pearson Education Inc. or its affiliate(s). All rights reserved.
+      Copyright © 2026 Pearson Education Inc. or its affiliate(s). All rights reserved.
     </p>
   </div>
 </footer>
@@ -258,9 +252,7 @@ exports[`<Footer /> renders correctly renders without a language selector in es 
     <p
       className="mb-0"
     >
-      Copyright © 
-      2026
-       Pearson Education Inc. or its affiliate(s). All rights reserved.
+      Copyright © 2026 Pearson Education Inc. or its affiliate(s). All rights reserved.
     </p>
   </div>
 </footer>

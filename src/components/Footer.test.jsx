@@ -6,6 +6,7 @@ import userEvent from '@testing-library/user-event';
 import { IntlProvider } from '@edx/frontend-platform/i18n';
 import { AppContext } from '@edx/frontend-platform/react';
 import { getConfig } from '@edx/frontend-platform';
+import '@testing-library/jest-dom';
 
 import Footer from './Footer';
 import FooterSlot from '../plugin-slots/FooterSlot';
@@ -113,6 +114,28 @@ describe('<Footer />', () => {
         .create(<FooterWithContext locale="en" />)
         .toJSON();
       expect(tree).toMatchSnapshot();
+    });
+
+    it('renders default copyright text with current year', () => {
+      render(<FooterWithContext locale="en" />);
+
+      const currentYear = new Date().getFullYear();
+      const expectedText = `Copyright © ${currentYear} Pearson Education Inc. or its affiliate(s). All rights reserved.`;
+
+      expect(screen.getByText(expectedText)).toBeInTheDocument();
+    });
+
+    it('renders custom copyright text from getConfig replacing {year}', () => {
+      const currentYear = new Date().getFullYear();
+      getConfig.mockReturnValue({
+        FOOTER_COPYRIGHT_TEXT: 'Copyright © {year} My Custom Company. All rights reserved.',
+      });
+
+      render(<FooterWithContext locale="en" />);
+
+      expect(
+        screen.getByText(`Copyright © ${currentYear} My Custom Company. All rights reserved.`),
+      ).toBeInTheDocument();
     });
   });
 
