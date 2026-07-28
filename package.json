@@ -1,6 +1,6 @@
 {
   "name": "@pearsonedunext/frontend-component-footer",
-  "version": "13.1.0-post.2",
+  "version": "13.1.0-post.3",
   "description": "Footer component for use when building Open edX frontend applications",
   "main": "dist/index.js",
   "publishConfig": {
