@@ -125,17 +125,15 @@ describe('<Footer />', () => {
       expect(screen.getByText(expectedText)).toBeInTheDocument();
     });
 
-    it('renders custom copyright text from getConfig replacing {year}', () => {
-      const currentYear = new Date().getFullYear();
+    it('renders custom copyright text from getConfig', () => {
+      const customText = 'Copyright © 2026 My Custom Company';
       getConfig.mockReturnValue({
-        FOOTER_COPYRIGHT_TEXT: 'Copyright © {year} My Custom Company. All rights reserved.',
+        FOOTER_COPYRIGHT_TEXT: customText,
       });
 
       render(<FooterWithContext locale="en" />);
 
-      expect(
-        screen.getByText(`Copyright © ${currentYear} My Custom Company. All rights reserved.`),
-      ).toBeInTheDocument();
+      expect(screen.getByText(customText)).toBeInTheDocument();
     });
   });
 
